@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# LTspice generated files
+*.raw
+*.op.raw
+*.log
+*.net
+*.plt

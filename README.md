@@ -29,6 +29,35 @@ PWM signals are generated using hardware timers to ensure precise frequency and 
 
 ---
 
+## Visual Overview
+
+> Note: LTspice waveform captures are intentionally exported with a wide time axis and reduced vertical height.  
+> This preserves switching detail (PWM edges, ripple, and transients) while keeping the full simulation window visible.  
+> For readability, view images at full width or zoom in on regions of interest.
+
+### H-Bridge Motor Driver Architecture
+![H-Bridge Block Diagram](images/h_bridge_block_diagram.png)
+
+High-level block diagram showing the PWM controller, H-bridge power stage, and DC motor load.
+
+---
+
+### PWM Gate Signal
+![PWM Gate Signal](images/pwm_waveform.png)
+
+PWM gate voltage applied to the low-side MOSFET, exported directly from LTspice.  
+The waveform is shown with a compressed vertical scale and extended horizontal window to clearly illustrate duty cycle consistency and switching frequency.
+
+---
+
+### Motor Current Ripple
+![Motor Current Ripple](images/motor_current_ripple.png)
+
+Simulated motor current waveform demonstrating inductive current ripple under PWM excitation.  
+The plot uses a long time window to show steady-state behavior rather than individual switching edges.
+
+---
+
 ## Switching Loss Analysis
 
 Switching losses in the power devices are analyzed using device parameters obtained from datasheets and expected operating conditions. Loss mechanisms considered include:
@@ -54,6 +83,9 @@ An LTspice model of the H-bridge motor driver is used to validate:
 - Direction reversal operation  
 
 Simulation results support analytical calculations and verify expected system behavior prior to hardware implementation.
+
+Waveform images are exported directly from LTspice rather than manually redrawn.  
+As a result, voltage plots may appear visually dense or vertically compressed; this is intentional and reflects real simulation scaling rather than post-processed illustrations.
 
 ---
 
@@ -87,3 +119,30 @@ Simulation results support analytical calculations and verify expected system be
 ✔ Control logic implemented  
 ✔ Analytical and simulation-based validation completed  
 🔄 Hardware implementation optional / future extension
+
+---
+
+# Images and Visuals
+
+This directory contains diagrams, plots, and waveforms used to visually document the PWM-based DC motor driver project.
+
+The visuals are intended to support the embedded firmware and analytical documentation by illustrating system architecture and expected electrical behavior.
+
+---
+
+## Planned Visuals
+
+- `h_bridge_block_diagram.png`  
+  High-level block diagram of the PWM controller, H-bridge, and motor load.
+
+- `pwm_waveform.png`  
+  Representative PWM gate signal showing duty-cycle-based speed control.
+
+- `motor_current_ripple.png`  
+  Example motor current waveform demonstrating inductive ripple under PWM switching.
+
+---
+
+## Notes
+
+Visuals may be generated using simulation tools, plotting software, or schematic capture tools. Exact numerical values are not required; the goal is to communicate design intent and system behavior clearly.
